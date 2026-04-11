@@ -6,6 +6,7 @@ define a = Character("You")
 define b = Character("Billey")
 default BilleyAlive = True
 default BilleyRun = False
+default TuckedSisterIn = False
 default obedianceScore = 96.0
 default misfit = False
 screen obediance():
@@ -88,15 +89,15 @@ label home:
         "No.":
             n "Why? This small deed of good affects the story in no feasible way."
             n "Now your poor little sister will be freezing all night."
-            n "How. Dare. You."
+            n "How. {w=0.5}Dare. {w=0.5}You."
             $ obedianceScore -= 20
             n "But... since I'm the narrator, I can change that myself."
-            n "*You tuck your sister in. {w=1.0}As if some mysterious force is making you. {w=1.0}You deeply regret not doing it yourself in the first place.*"
+            n "*You tuck your sister in. {w=1.5}As if some mysterious force is making you. {w=1.0}You deeply regret not doing it yourself in the first place.*"
     jump endScreen
 
 define w = Character("Processing Worker")
 label endScreen:
-    w "You've come here, to the ending screen for some reason or another."
+    w "You've come here, to the ending screen, for some reason or another."
     w "Welcome."
     w "Now, let's take a look at what we've captured of you..."
     if not BilleyAlive:
