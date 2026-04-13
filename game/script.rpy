@@ -235,10 +235,46 @@ label lesson1:
     menu:
         b "*Sits down next to you.*"
         "Why were you so late?":
-            b "None the matter... say, in 3 days, do you want to have a sleepover?"
+            b "None... nothing to worry about... "
+            b "Eh... {w=0.5}Probably..."
+            b "I hope..."
+            b "say, in 3 days, do you want to have a sleepover?"
             show text "3 Days." with dissolve
             a "3 days? I—Uh—"
             hide text "3 Days." with dissolve
+    a "Sure... I guess..."
+    a "Just as long as we don't repeat what happened with your sister... y'know. Third try's not the charm."
+    n "You two laugh in unison."
+    n "The teacher then glares daggers at the pair of you."
+    $ renpy.say("Teacher", "You two lovebirds. Not this again. One warning - and this is it.")
+    $ renpy.say("Teacher", "You're always being observed after all. Behave the part.")
+    if obedienceScore >= 80:
+        a "Yes sir."
+    else:
+        menu:
+            b "You gonna keep playing by their rules, [a.name] or are ya gonna stand up for yourself?"
+            "Rules are rules.":
+                $ obedienceScore += 15
+            "Stand up for myself? Hell yes.":
+                $ obedienceScore -= 20
+                b "Say... how interested would you be, theoretically, in..."
+                b "... in standing up against the whole system?"
+                b "Stand against them..."
+                b "Theoretically, of course!"
+                menu:
+                    "I mean... sure. I guess.":
+                        b "If you're certain then meet me in the janitor's closet after school."
+                n "(After school.)"
+                menu:
+                    "Do you go to the closet with Billey?"
+                    "Yes.":
+                        n "Upon entering the closet, you see Billey, standing there ominously in the dark."
+                    "No.":
+                        jump homeAgain
+
+label homeAgain:
+    pass
+    # DO THIS NEXT
 
 define w = Character("Processing Worker")
 label endScreen:
