@@ -269,12 +269,65 @@ label lesson1:
                     "Do you go to the closet with Billey?"
                     "Yes.":
                         n "Upon entering the closet, you see Billey, standing there ominously in the dark."
+                        jump recruitment
                     "No.":
                         jump homeAgain
 
+label recruitment:
+    a "Yes, Billey?"
+    menu:
+        b "Can I trust you?"
+        "Yes.":
+            b "Good."
+        "No.":
+            b "Haha. Ok, so."
+    menu:
+        b "Have you heard the rumours of the Misfits?"
+        "Yes.":
+            b "Splendid!"
+        "No.":
+            b "Ok. So the Misfits are, allegedly, an elite taskforce that has infiltrated the roots of society,"
+            b "planting people - \"Masked\" - amongst us as teacher, janitors, students, and any role."
+            b "The carry out protests, riots, data breaches of the government, some of the biggest ever DDos attacks against surveillance systems,"
+            b "all to try and rid us of all the surveillance that has plagued our world."
+            a "Okay..."
+    a "And... why do I need to know of the Misfits?"
+    b "Because I am one of them."
+    a "You... what?!"
+    b "I am a Misfit. I've been one for up on a year now. "
+    a "And you... want me to join you?"
+    b "Exactly."
+    menu:
+        "Deal.":
+            b "Great. Then follow me."
+            jump misfitMeeting
+        "No.":
+            b "You... you sure?"
+            menu:
+                "Yes.":
+                    b "Then... we can't have you know..."
+                    n "A sharp pain spreads through your body and, looking down, you see a gaping hole in your chest. That probably shouldn't be there."
+                    jump endScreen
+                "No.":
+                    b "Then you're joining us. Good."
+                    jump misfitMeeting
+        "(Call out to nearby teacher to tell on Billey.)":
+            a "Help! Misfit member!"
+            $ renpy.say("Teacher", "(Rushes over.) Misfit member? This is serious. You sure?")
+            a "Yes. Billey is a Misfit."
+            $ renpy.say("Teacher", "(Muttering...) Always knew it... (Turns to [a.name].) Good work. *Takes Billey away.*")
+            n "Day after day, you don't see Billey. They teachers say he had a 'permanent move to a more optimal area for him to learn'."
+            n "They killed him. You're certain."
+            n "In your distraught of losing your first and closest friend, you are unable to live with your guilt."
+            jump endScreen
+
+label misfitMeeting:
+    pass
+    # DO THIS NEXT!
+
 label homeAgain:
     pass
-    # DO THIS NEXT
+    # OR DO THIS!!
 
 define w = Character("Processing Worker")
 label endScreen:
