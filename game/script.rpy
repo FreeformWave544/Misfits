@@ -372,10 +372,34 @@ label misfitMeeting:
     b "Say, do you like computers?"
     menu:
         "Yes.":
-            b "Perfect! Then you can be in our hacker sector. For short, we call it Hack Club."
+            b "Perfect! Then you can be in our hacker sector. For short, we like to call it our \'Hack Club\'."
             $ HC = True
         "No.":
             b "Ah... oh well."
+    n "After the meeting, you've all decided on hacking and taking down the school website - distract the IT team to get more time for other acts against surveillance."
+    if HC:
+        n "You've been put fourth to show your skills and lead this project."
+    b "Wait, wait wait wait!"
+    b "[a.name], we need to assign you your role."
+    b "We have the Geeks. {w=1.0}They find bypasses, exploits, vulnerabilities in the ruined system and do all the research and OSINT required."
+    b "Then we have the Neeks. {w=1.0}Field agents who deal with on-the-job tech problems and hacking, specially trained in stealth."
+    b "Next up, the Nerds. {w=1.0}Field operatives who do a majority of the strategic planning, sleight of hand, leading, and logical thinking."
+    b "Finally, the Freaks. {w=1.0}Rough, strong operatives who might run protests, lead riots, or do a majority of the combat."
+    b "And under the hood, the Masked deal with infiltration. They hide under the cover of the system, acting as teachers, students, janitors, or police! Any job needed to fit in and gather intelligence."
+    b "My way of fixing the system has always been blowing up the medium into a million pieces and putting it back together in a beautiful sculpture."
+    b "But that's just me."
+    menu:
+        b "So, what do you chose?"
+        "Geek":
+            pass
+        "Neek":
+            pass
+        "Nerd":
+            pass
+        "Freak":
+            pass
+        "Masked":
+            pass
 
 label homeAgain:
     pass
