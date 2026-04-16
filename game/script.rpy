@@ -23,6 +23,7 @@
                 name += "?"
         return name
 
+define m = Character("Maverick")
 define n = Character("Narrator")
 define a = Character("You")
 define b = Character("Billey")
@@ -130,7 +131,7 @@ label presence:
                             jump home
                         "No.":
                             a "Billey! Talk to me!"
-                            $change_obedience(-10)
+                            $ change_obedience(-10)
                             jump BilleyRunning
                 "Keep walking. {w=0.2}Any delay from your route will affect your obedience score.":
                     jump home
@@ -139,7 +140,7 @@ label presence:
                     $ change_obedience(-10)
                     jump BilleyRunning
         "Run.":
-            $change_obedience(-20)
+            $ change_obedience(-20)
             n "You bump into a man who was trying to pry the microphone embedded in their clothes..."
             n "They were using a knife to do so..."
             n "A sharp pain spreads through your body, {w=2.0}and in your last breath, {w=2.0}you look down to see a knife {w=1.0}impaled into your chest."
@@ -418,7 +419,7 @@ label misfitMeeting:
     $ change_obedience(-5)
     b "And here I thought you were a servant of the system. Guess you've proved my doubts to be nothing but that - doubts."
     $ say("Important Misfit", "I'm nicknamed \'Maverick\' by the way.")
-    $ say("Maverick", "I'm the leader of the UK Misfits.")
+    m "I'm the leader of the UK Misfits."
     jump misfitDay
 
 label misfitDay:
@@ -487,6 +488,31 @@ label camerasLesson:
 
 label misfitCamera:
     b "Well done!"
+    b "How'd it go?"
+    menu:
+        "Well.":
+            b "That's good."
+        "Interestingly...":
+            b "Why? How did you disable the cameras?"
+            a "I... failed at the Macarena..."
+            b "Huh?! I— You— Wha—"
+            b "You know what? I don't care!"
+            b "Everyone in this establishment is mad!"
+            b "That's just the chaotic way we do things here."
+    b "Anyway, we've got a new job for you. Do you chose to accept?"
+    menu:
+        b "We need you to kill a kitten."
+        "Yes.":
+            b "Monster."
+            return
+        # -=-=-=-=-=-=-=-=- UNFINISHED -=-=-=-=-=-=-=-=- UNFINISHED -=-=-=-=-=-=-=-=- UNFINISHED -=-=-=-=-=-=-=-=-
+        "No.":
+            b "Wrong choice."
+            n "You feel a strange sensation growing inside you,"
+            n "like you're being lifted from the ground, ascending..."
+            n "then, all of a sudden, this sensation collapses in on itself, and a sheer pain - exploding inside of you."
+            n "You collapse to the ground, coughing up blood."
+            jump endScreen
 
 label homeAgain:
     n "The day passes."
@@ -523,10 +549,10 @@ label endScreen:
     if obedienceScore < 0 and misfit:
         w "Uhh...—"
         n "What's?—"
-        $ say("Maverick", "Now that we've got them gone...")
-        $ say("Maverick", "[a.name], you were one of our best members, and we can't have you go just like that.")
-        $ say("Maverick", "So what we're gonna do is send you through time and space to join the Misfits in the Misfit HQ, 2031.")
-        $ say("Maverick", "The future so not to cause any problems in time.")
+        m "Now that we've got them gone..."
+        m "[a.name], you were one of our best members, and we can't have you go just like that."
+        m "So what we're gonna do is send you through time and space to join the Misfits in the Misfit HQ, 2031."
+        m "The future so not to cause any problems in time."
         jump future
     elif obedienceScore < 50:
         w "You're a traitor of the worst kind."
@@ -579,4 +605,47 @@ label endScreen:
             return
 
 label future:
-    n "You've jumped so far in the future, that I've not yet completed this..."
+    n "You open your eyes."
+    n "It is dark."
+    n "It is quiet."
+    n "And it smells like lavender?"
+    n "Taking a look around, you see you're in a huge, luxurious mansion, yet no one in sight - it seems to be night time."
+    menu:
+        "Explore the current room.":
+            n "There is a big TV on the wall, and a red couch, big enough for at least 10 people, placed in front of said TV."
+            n "There is also a table in the middle of the room with chairs encapsulating it."
+            n "And a grand piano off to the side."
+        "Go through the nearest door - a soft pink, cosy door.":
+            jump pinkRoom
+
+label pinkRoom:
+    n "Upon entering the room, you see it seems to be a child's play area, and from the various things scattered, you can deduce it to be targeted towards the stereotypical female."
+    n "And a bed."
+    n "A bed in the corner with a young child sleeping on it..."
+    n "A violin laid against the bed."
+    menu:
+        "Hold the violin...":
+            call violin
+        "Leave it be.":
+            pass
+    n "The door creaks slightly before flying open, and a man marching in."
+    $ say("Man", "You. What's your business here?")
+    menu:
+        "The Maverick sent me.":
+            $ say("Man", "The...?")
+            $ say("Man", "I'm the Maverick...")
+            $ say("Man", "Wait... [a.name]?")
+            a "Yes! That's me."
+            m "And the Maverick is me."
+        "Who are you?":
+            $ say("Man", "I should not trust you, but I do.")
+            m "I'm the Maverick. Now, who are you?"
+            a "The Maverick! I'm [a.name]! Remember me?"
+            m "I... yes, I do!"
+    m "Since you left, the Misfits of the UK decended to chaos. The UK is ruined. I was forced to flee to here - the Capital of the Misfits and most surveillance-heavy country in the world."
+    a "How... wait, is Billey okay?!"
+    m "He's here in this very house... but he's fallen sick."
+
+label violin:
+    n "The violin fits perfectly in your arms, and you feel an unresistable urge to play it..."
+    n "But you resist. Obedience is the way. You put back the violin, and you continue on your way."
