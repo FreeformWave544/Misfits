@@ -645,6 +645,15 @@ label pinkRoom:
     m "Since you left, the Misfits of the UK decended to chaos. The UK is ruined. I was forced to flee to here - the Capital of the Misfits and most surveillance-heavy country in the world."
     a "How... wait, is Billey okay?!"
     m "He's here in this very house... but he's fallen sick."
+    a "Is... is he gonna survive?"
+    m "Maybe."
+    m "We've never seen anything like it."
+    m "Even with our advanced technology and hard-working members, we've found nothing."
+    m "Nothing what so ever. Every time we think we're getting somewhere, it seems to mutate into a whole new virus, yet we have no evidence of change."
+    a "Are you saying..."
+    m "Yes..."
+    a "That Billey can name this new virus how they want?!"
+    m "*Chucles slightly.* Sadly no, documenting it would blow our cover."
 
 label violin:
     n "The violin fits perfectly in your arms, and you feel an unresistable urge to play it..."
