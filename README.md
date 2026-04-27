@@ -31,16 +31,16 @@ A dystopian, surveillance-heavy world with a secret.
   - [:handshake: Links](#handshake-links)
   - [:gem: Acknowledgements](#gem-acknowledgements)
 
-  
+
 
 <!-- About the Project -->
 ## :star2: About the Project
-<p>The Misfits is a visual novel based off of one of my recent (unfinished) stories. It is a dystopian, surveillance-heavy world with a secret, underground rebellion group, aptly named "The Misfits". An underground rebellion group, aptly named "The Misfits".<br />But they are not without secrets as well.</p>
+<p>The Misfits is a visual novel based off of one of my recent (unfinished) stories. It is a dystopian, surveillance-heavy world with a secret, underground rebellion group, aptly named "The Misfits".<br />But they are not without secrets themselves.</p>
 
 <!-- Features -->
 ### :dart: Features
 
-- >A mix of absurd comedy, introspective writing, and dark humour, masterfully complimenting a serious side.
+- >A mix of absurd comedy, introspective writing, and dark humour, masterfully complementing a serious side.
 - >Surreal, narrative-driven experience.
 - >Your voice — and your choices — matters.
 
