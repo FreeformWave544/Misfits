@@ -797,6 +797,7 @@ label future:
             n "There is a big TV on the wall, and a red couch, big enough for at least 10 people, placed in front of said TV."
             n "There is also a table in the middle of the room with chairs encapsulating it."
             n "And a grand piano off to the side."
+            n "You go through the nearest door."
         "Go through the nearest door - a soft pink, cosy door.":
             jump pinkRoom
 
@@ -850,6 +851,12 @@ label pinkRoom:
     n "And now without him gone... you won't have people constantly and unfairly comparing you two..."
     n "Why should you be compared to someone with completely different passions, joys, and loves than you?"
     n "Two separate entities are not equatable."
+    menu:
+        m "I'm so sorry for your loss..."
+        "What's there to be sorry for? I didn't lose him, I was freed of him.":
+            m "[a.name] how dare you. He was your best friend."
+            m "Where has this apathy came from?!"
+        ""
 
 label violin:
     n "The violin fits perfectly in your arms, and you feel an irresistible urge to play it..."
