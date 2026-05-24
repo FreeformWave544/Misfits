@@ -79,7 +79,7 @@ label start:
     n "It was a day like all the others."
     n "Nothing observed to differ from the norm."
     show screen obedience
-    a "*Sigh* Another 11-hour school day... {w=1.0}'optimal' knowledge retention they said..."
+    a "*Sigh* Another 11-hour school day... {w=1.0}'optimal' knowledge retention, they said..."
     a "Ha{w=0.2}.{w=0.2}.{w=0.2}. optimal for collecting data we know."
     n "You start walking to school, your sister assumably running late yet again."
     jump presence
@@ -166,7 +166,7 @@ label BilleyRunning:
 
 label home:
     n "Now you're home,"
-    n "You think over the events of today and can't help but think you missed something... {w=2.0}something important. {w=0.5}Very, {w=0.2}very important..."
+    n "You reflect on events of today and can't help but think you missed something... {w=2.0}something important. {w=0.5}Very, {w=0.2}very important..."
     n "You head to your room, and see your little sister is already in bed."
     menu:
         n "Do you tuck your little sister in?"
@@ -234,7 +234,7 @@ label home:
                                     b "Ok. The truth? I was looking for a parcel."
                                     a "In a tree? Likely story."
                                     b "Believe me! It's the truth. Just as true as: We need to get to lesson now. Before we're late."
-                                    b "Else your 'all so precious' obedience score will be tarnished!"
+                                    b "Else your 'oh-so-precious' obedience score will be tarnished!"
                                     a "Ha. But I bet your obedience score is so much worse than mine."
                                     b "No clue. I stopped checking it when I got my 15th reduction."
                                     jump lesson1
@@ -428,7 +428,7 @@ label misfitMeeting:
     jump misfitDay
 
 label misfitDay:
-    n "You've been assigned to do whatever it takes it disable the security cameras in the bathroom during your 2nd lesson."
+    n "You've been assigned to do whatever it takes to disable the security cameras in the bathroom during your 2nd lesson."
     n "First lesson flies by, but now you have lesson 2."
     menu:
         "Go to the bathroom.":
@@ -505,7 +505,7 @@ label misfitCamera:
             b "You know what? I don't care!"
             b "Everyone in this establishment is mad!"
             b "That's just the chaotic way we do things here."
-    b "Anyway, we've got a new job for you. Do you chose to accept?"
+    b "Anyway, we've got a new job for you. Do you choose to accept?"
     menu:
         b "We need you to kill a kitten."
         "Yes. I... Accept.":
@@ -542,8 +542,8 @@ label misfitCamera:
                 "Do you take it home with you?"
                 "Yes.":
                     n "KITTY! CAT! SO CUTE! AWEEE!!!"
-                    n "And yet it doesn't resist. It justs... let's you..."
-                    n "No protest from being tore from its home..."
+                    n "And yet it doesn't resist. It just... lets you..."
+                    n "No protest from being torn from its home..."
                     n "No fear..."
                     n  "No affection..."
                     n "Just a husk of anything yet nothing..."
@@ -562,7 +562,7 @@ label misfitCamera:
 
 label catHome:
     n "At your house, you set the cat down."
-    n "The cat lays there."
+    n "The cat lies there."
     n "You find it some food."
     n "You feed it."
     n "Its eyes finally lay to rest.{w=1.0} It sleeps."
@@ -668,7 +668,7 @@ label catHome:
             b "You want to manipulate me. Make me leave the Misfits, but you're wrong! I will stay strong!"
             b "I... I... I... I am in the right. Not you!"
             n "Billey runs out the front door. Runs and runs and runs."
-    n "You know what you done is wrong."
+    n "You know what you have done is wrong."
     if cat:
         n "You know Billey now hates you."
         n "You know you've wronged him."
@@ -736,8 +736,6 @@ label endScreen:
     w "You've come here, to the ending screen, for some reason or another."
     w "Welcome."
     w "Now, let's take a look at what we've captured of you..."
-    if not BilleyAlive:
-        w "So... you deviated to kill your friend? Well done for killing a lead figure."
     if obedienceScore < 0 and misfit and not Mortal and not MaverickDead:
         w "Uhh...—"
         n "What's?—"
@@ -748,6 +746,8 @@ label endScreen:
         m "So what we're gonna do is send you through time and space to join the Misfits in the Misfit HQ, 2031."
         m "The future so not to cause any problems in time."
         jump future
+    elif not BilleyAlive:
+        w "So... you deviated to kill your friend? Well done for killing a lead figure."
     elif obedienceScore < 50:
         w "You're a traitor of the worst kind."
         if misfit:
@@ -788,7 +788,7 @@ label endScreen:
         n "Your life was meaningless. You did nothing of value."
         n "I feel sorry for you. Actual pity."
     if MaverickDead:
-        w "You infiltratede the Misfits."
+        w "You infiltrated the Misfits."
         w "You led the death of their most disruptive: Billey."
         w "And pioneered the murder of their leader: Maverick."
         w "You are truly an inspiration to us all."
@@ -808,7 +808,7 @@ label endScreen:
         n "You follow and follow and follow."
         n "Then you reach it. A big room, empty of anything."
         db "Here... here is where you will stay for the next few lifetimes of the universe."
-        db "You will watch and intervene where needbe."
+        db "You will watch and intervene where need be."
         db "You will protect our system and society from all that is wrong."
         a "Yes. Sir."
         n "And with those two words, a switch flicks in your mind."
@@ -816,6 +816,7 @@ label endScreen:
         n "Your mind which obeys without question,"
         n "Sitting down at a desk and staring at a monitor screen."
         n "Staring at the world..."
+        jump JudgeOfDeath
     if Mortal:
         w "You could have saved our system from the Maverick."
         w "And yet you decided to send yourself here - to the end."
@@ -908,8 +909,8 @@ label pinkRoom:
     menu:
         m "I'm so sorry for your loss..."
         "What's there to be sorry for? I didn't lose him, I was freed of him.":
-            m "[a.name] how dare you. He was your best friend."
-            m "Where has this apathy came from?!"
+            m "[a.name] how dare you? He was your best friend."
+            m "Where has this apathy come from?!"
     m "You are... weird..."
     a "HA! Weird?!"
     a "*I gasp dramatically.* Well, what's weird if not a social construct that can be redefined. If the majority of us all info-dump, it won't be weird anymore!"
@@ -988,3 +989,6 @@ label MaverickDeath:
 label violin:
     n "The violin fits perfectly in your arms, and you feel an irresistible urge to play it..."
     n "But you resist. Obedience is the way. You put back the violin, and you continue on your way."
+
+label JudgeOfDeath:
+    pass
