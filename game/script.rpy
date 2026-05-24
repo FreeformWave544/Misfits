@@ -35,6 +35,8 @@ default misfit = False
 default HC = False
 default cat = False
 default role = ""
+default MaverickDead = False
+default Mortal = False
 screen obedience():
     frame:
         xalign 0.95
@@ -540,6 +542,11 @@ label misfitCamera:
                 "Do you take it home with you?"
                 "Yes.":
                     n "KITTY! CAT! SO CUTE! AWEEE!!!"
+                    n "And yet it doesn't resist. It justs... let's you..."
+                    n "No protest from being tore from its home..."
+                    n "No fear..."
+                    n  "No affection..."
+                    n "Just a husk of anything yet nothing..."
                 "No.":
                     n "You can't bear to leave it. You take it with you."
             $ cat = True
@@ -626,6 +633,11 @@ label catHome:
                     n "He resists. He fights back. He knees you in the chest. He gets free. He runs, throat bleeding."
                     n "You stare down at your blood soaked keys."
                     n "You stare down at your sinless sins."
+                    "..."
+                    n "..."
+                    b "..."
+                    "..."
+                    jump sister
         "Yet you always told me to ignore the system.":
             a "Yet you always told me to ignore the system. To rebel. And yet here I am doing that and you're ANGRY."
             a "Y'know, I think you're, more so than angry, hypocritical and narcissistic."
@@ -726,10 +738,10 @@ label endScreen:
     w "Now, let's take a look at what we've captured of you..."
     if not BilleyAlive:
         w "So... you deviated to kill your friend? Well done for killing a lead figure."
-    if obedienceScore < 0 and misfit:
+    if obedienceScore < 0 and misfit and not Mortal and not MaverickDead:
         w "Uhh...—"
         n "What's?—"
-        n "Both the worker and I disappear... I disappeared, how am I speaking? Eh, who cares."
+        n "Both the worker and I disappear... {w=1.0}I disappeared... {w=0.5}how am I speaking? {w=1.0}Eh, who cares."
         n "CONTINUITY ERRORS! YEAH!!"
         m "Now that we've got them gone..."
         m "[a.name], you were one of our best members, and we can't have you go just like that."
@@ -768,9 +780,47 @@ label endScreen:
         n "Billey does not remember you."
         n "No one even noticed you were gone."
         n "The system just... let you fade out..."
+        "..."
+        n "..."
+        "Goodbye.{w=0.2}.{w=0.2}.{w=0.5} I'll miss all I had..."
+        n "..."
     elif not misfit and obedienceScore >= 90 and BilleyAlive:
         n "Your life was meaningless. You did nothing of value."
         n "I feel sorry for you. Actual pity."
+    if MaverickDead:
+        w "You infiltratede the Misfits."
+        w "You led the death of their most disruptive: Billey."
+        w "And pioneered the murder of their leader: Maverick."
+        w "You are truly an inspiration to us all."
+        n "A bright golden flash surrounds you."
+        n "A strange sensation punches you in the gut."
+        n "...{w=0.5} a few gasped breaths and then..."
+        n "And then a gentle hand rests on your shoulder..."
+        define db = Character("Death's Boss")
+        n "And a voice graces your ears..."
+        db "Hello, [a.name]."
+        a "How do you know my—"
+        n "You try to speak further,"
+        n "But the words hide upon your heart..."
+        db "Shhh..."
+        db "You're coming with me."
+        n "And so you feel compelled to follow."
+        n "You follow and follow and follow."
+        n "Then you reach it. A big room, empty of anything."
+        db "Here... here is where you will stay for the next few lifetimes of the universe."
+        db "You will watch and intervene where needbe."
+        db "You will protect our system and society from all that is wrong."
+        a "Yes. Sir."
+        n "And with those two words, a switch flicks in your mind."
+        n "Your mind which goes numb and listens."
+        n "Your mind which obeys without question,"
+        n "Sitting down at a desk and staring at a monitor screen."
+        n "Staring at the world..."
+    if Mortal:
+        w "You could have saved our system from the Maverick."
+        w "And yet you decided to send yourself here - to the end."
+        w "We'll give you another chance."
+        w "Report to refactoring."
     menu:
         "Restart Evaluation?":
             if misfit:
@@ -849,14 +899,91 @@ label pinkRoom:
     n "He was always treated as more than you. Always treated with respect. Always acknowledged."
     n "Yet you got ignored. Disrespected. Dehumanised."
     n "And now without him gone... you won't have people constantly and unfairly comparing you two..."
+    n "A thought that lingers with an absence that provides no relief nor silence."
     n "Why should you be compared to someone with completely different passions, joys, and loves than you?"
     n "Two separate entities are not equatable."
+    a "And yet, nonetheless, I try to compare..."
+    a "Is that not what humans do? Compare with one another needlessly and endlessly?"
+    "..."
     menu:
         m "I'm so sorry for your loss..."
         "What's there to be sorry for? I didn't lose him, I was freed of him.":
             m "[a.name] how dare you. He was your best friend."
             m "Where has this apathy came from?!"
-        ""
+    m "You are... weird..."
+    a "HA! Weird?!"
+    a "*I gasp dramatically.* Well, what's weird if not a social construct that can be redefined. If the majority of us all info-dump, it won't be weird anymore!"
+    a "It would be considered 'normal'."
+    a "..."
+    a "The new 'normal'."
+    a "The prior would be nigh on inconceivable!"
+    a "So we can be whatEVER we want, and we can just redefine it as our own normals."
+    a "And if we truly wanted..."
+    a "we could rid ourselves"
+    a "- rid our lives -"
+    a "of those collective delusions that are spoken as if conclusions!"
+    a "Run with those of forest born!"
+    a "Swim with those born to water!"
+    a "Soar with those born for sky!"
+    a "Do whatever we want..."
+    a "Without the formality of morality..."
+    a "..."
+    a "Without the fear of more..."
+    a "Without the... {w=0.5}punishment of judgement..."
+    a "Or the theatre of mainstream normality!"
+    a "Wouldn't that be freedom? {w=1.0}True freedom..."
+    a "Come. Take my hand. Run with me. Swim with me. Flourish with me."
+    m "..."
+    m "[a.name]..."
+    m "I didn't know... {w=0.5}I didn't know you were so..."
+    m "So..."
+    m "Delusional."
+    a "[m.name]?! What——?! Why—?!"
+    m "When you learn to obey, you ain't gonna feel no pain."
+    a "And that's where you're wrong, and you know it."
+    a "IF I were to learn to obey, I would INTERNALISE my pain."
+    a "IF I were to—"
+    m "AND IF you were to shut up and listen, you would realise."
+    m "Realise that the system is not one to cross."
+    m "Not one to cross unless you cross it with us."
+    m "With the Misfits."
+    m "Our system works. It—"
+    menu:
+        "Our system?":
+            a "There you admit yourself. You want to implement a system that favours you more."
+            a "That's what the creators of this system wanted."
+            a "It's a self-fulfilling prophecy."
+            a "For each system made, one tries to replace it."
+            a "Nothing ever changes."
+        "You're right.":
+            a "It does work, doesn't it?"
+            m "Indeed. Now you're getting it."
+    n "You remember something..."
+    menu:
+        n "A gun in your pocket."
+        "Silence the revolutionary tyranny...":
+            jump gun
+        "Tempt life's mortality...":
+            call gun
+            n "The bullet pierces your skull."
+            n "Your thoughts fold."
+            n "Your heart skips a dozen beats, then a dozen more."
+            n "Your body feels detached from the Earth..."
+            n "..."
+            $ Mortal = True
+            jump endScreen
+
+label gun:
+    m "What are you—"
+    n "Another life on your hands..."
+    n "Another life wasted to death..."
+    n "Another lifetime of guilt..."
+    n "..."
+
+label MaverickDeath:
+    n "[m.name] drops to the ground... a lifeless corpse."
+    $ MaverickDead = True
+    jump endScreen
 
 label violin:
     n "The violin fits perfectly in your arms, and you feel an irresistible urge to play it..."
