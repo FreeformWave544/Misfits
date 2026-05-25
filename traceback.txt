@@ -1,28 +1,64 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 689, in script
-    $ renpy.show_screen(obedience_popup, "++Find your sister at all costs.++")
-  File "game/script.rpy", line 689, in <module>
-    $ renpy.show_screen(obedience_popup, "++Find your sister at all costs.++")
-NameError: name 'obedience_popup' is not defined. Did you mean: 'obedienceScore'?
+  File "game/script.rpy", line 997, in script call
+    python:
+  File "game/script.rpy", line 1003, in <module>
+    renpy.call(j)
+    ~~~~~~~~~~^^^
+renpy.game.CallException
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "game/script.rpy", line 997, in script call
+    python:
+  File "game/script.rpy", line 997, in script call
+    python:
+renpy.script.LabelNotFound: could not find label 'judgement0'. Did you mean: 'judgement1'?
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
-  File "game/script.rpy", line 689, in script
-    $ renpy.show_screen(obedience_popup, "++Find your sister at all costs.++")
+  File "game/script.rpy", line 997, in script call
+    python:
   File "renpy/ast.py", line 1187, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "renpy/python.py", line 1273, in py_exec_bytecode
     exec(bytecode, globals, locals)
     ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "game/script.rpy", line 689, in <module>
-    $ renpy.show_screen(obedience_popup, "++Find your sister at all costs.++")
-NameError: name 'obedience_popup' is not defined. Did you mean: 'obedienceScore'?
+  File "game/script.rpy", line 1003, in <module>
+    renpy.call(j)
+    ~~~~~~~~~~^^^
+  File "renpy/exports/statementexports.py", line 294, in call
+    raise renpy.game.CallException(label, args, kwargs, from_current=from_current)
+renpy.game.CallException
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "renpy/bootstrap.py", line 401, in bootstrap
+    renpy.main.main()
+    ~~~~~~~~~~~~~~~^^
+  File "renpy/main.py", line 591, in main
+    run(restart)
+    ~~~^^^^^^^^^
+  File "renpy/main.py", line 137, in run
+    renpy.execution.run_context(True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "renpy/execution.py", line 1036, in run_context
+    context.run()
+    ~~~~~~~~~~~^^
+  File "game/script.rpy", line 997, in script call
+    python:
+  File "game/script.rpy", line 997, in script call
+    python:
+  File "renpy/script.py", line 1201, in lookup
+    raise LabelNotFound(original)
+renpy.script.LabelNotFound: could not find label 'judgement0'. Did you mean: 'judgement1'?
 
 Windows-11-10.0.26200-SP0 AMD64
 Ren'Py 8.5.2.26010301
 The Misfits 1.0
-Sat Apr 18 18:15:59 2026
+Mon May 25 19:55:10 2026

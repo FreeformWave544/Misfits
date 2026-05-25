@@ -733,7 +733,24 @@ label homeAgain:
 
 define w = Character("Processing Worker")
 define db = Character("Death's Boss")
+default maskedMistake = False
 label endScreen:
+    if maskedMistake:
+        n "No one is here. Not the [w.name] nor [db.name]! You caused for yourself, after all."
+        menu:
+            "Restart Adventure?":
+                if misfit:
+                    w "For joining the misfits, you will wait here for a while to think of your actions."
+                    w "Don't worry, no matter how much you click, it won't be any quicker."
+                    python:
+                        renpy.say(n, "".join("{color=#%06x}...\u200b{/color}{w=0.1}" % random.randint(0, 0xFFFFFF) for _ in range(max(0, int(180.0 - obedienceScore)))))
+                if TuckedSisterIn == False:
+                    w "We're looping back. {w=0.5}Why didn't you tuck your sister in?"
+                    w "Is it some kind of Personal Vendetta (same name as one of my game - go play it on itch.io!) against your own sister?"
+                    w "If so, why? She never did anything good nor bad to you! All you see of her is her sleeping in this WHOLE visual novel!"
+                jump start
+            "Exit...":
+                return
     w "You've come here, to the ending screen, for some reason or another."
     w "Welcome."
     w "Now, let's take a look at what we've captured of you..."
@@ -994,10 +1011,19 @@ label JudgeOfDeath:
     db "You job is to determine whether the people you get sent deserve another chance, incineration, or refactoring."
     db "And what makes this different to what the [w.name] does is, you get those they can't decide upon."
     python:
-        for i in range(5):
-            renpy.call("judgement" + str(i + 1))
+            judgements  = []
+            for i in range(5):
+                judgements.append("judgement" + str(i + 1))
+            for x in range(5):
+                random.shuffle(judgements)
+                for j in judgements:
+                    renpy.call(j)
+    n "And, promptly, you shift ends."
+    db "You done... something. And that's more than the last guy - keep it up."
+    n "And years pass. Over and over and over you do this..."
+    jump endScreen
 
-$ default mercy = 0
+default mercy = 0
 label judgement1:
     n "A boy - 14 at most - walks in, and on your display pops up a ton of information."
     "Obedience: [random.randint(1, 99)]"
@@ -1029,12 +1055,22 @@ label judgement3:
     menu:
         "Second chance?":
             n "And so the end of the world was brought to truth."
-            n "Death after death you witnessed."
-            n "Blood baths and poppy parks."
+            n "Death after death, you witnessed."
+            n "Blood baths and poppy parks plagued the ruined realm."
             n "And all this?"
             n "One wrong choice caused ALL of this wreckage."
+            n "One wrong choice of you."
+            n "..."
+            n "But you've got to ask yourself: Was it the only wrong choice?"
+            n "Was it the most wrong choice?"
+            n "Or was it, in fact, the best of the choices you had?"
+            n "But nonetheless. There was a choice and you took it."
+            n "And as such..."
             db "You would be fired... if only there were still a job."
             db "Everyone is dead."
+            db "You can be Death's Judge if there's no clients nor jobs."
+            $ maskedMistake = True
+            jump endScreen
         "Incineration?":
             $ mercy -= 50
             db "Well done."
@@ -1052,7 +1088,7 @@ label judgement3:
             n "And this loops over and over."
             n "Fogging your mind,"
             n "And preventing you from thinking straight."
-            n "And then you feel something else..."
+            n "Then you feel something else..."
             n "Your body eating itself from the inside out,"
             n "And within moments you are reduced to nothing,"
             n "And the very last thing you hear..."
@@ -1070,6 +1106,8 @@ label judgement3:
             n "And once you feel numb to the pain, a single giant fish swallows you,"
             n "and you start burning in the stomach acids."
             n "Each and every pain being eternal. No time for rest. No time for anything but pain."
+            $ maskedMistake = True
+            jump endScreen
         "Refactoring?":
             n "A few years pass, and this event never crosses your mind again... until..."
             db "The masked man you sent to refactoring a few years ago? Remember them?"
@@ -1077,6 +1115,13 @@ label judgement3:
             db "Today, they just got out."
             db "They *were* my boss - a being capable of making worlds collapse..."
             db "Now, they're a king, capable of erecting kingdoms and making economies flourish."
+            db "And yet..."
+            db "And yet you sent them to refactoring..."
+            db "You tried to change them - permanently,"
+            db "Not once thinking of the possible consequences."
+            db "It paid off. But the next time, it might not."
+            db "But, for you, I'll go with the first option you had: A second chance."
+            jump endScreen
 
 label judgement4:
     n "A "
