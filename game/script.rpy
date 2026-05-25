@@ -732,6 +732,7 @@ label homeAgain:
     jump endScreen
 
 define w = Character("Processing Worker")
+define db = Character("Death's Boss")
 label endScreen:
     w "You've come here, to the ending screen, for some reason or another."
     w "Welcome."
@@ -990,4 +991,113 @@ label violin:
     n "But you resist. Obedience is the way. You put back the violin, and you continue on your way."
 
 label JudgeOfDeath:
-    pass
+    db "You job is to determine whether the people you get sent deserve another chance, incineration, or refactoring."
+    db "And what makes this different to what the [w.name] does is, you get those they can't decide upon."
+    python:
+        for i in range(5):
+            renpy.call("judgement" + str(i + 1))
+
+$ default mercy = 0
+label judgement1:
+    n "A boy - 14 at most - walks in, and on your display pops up a ton of information."
+    "Obedience: [random.randint(1, 99)]"
+    "Height: [random.randint(5, 7)]'[random.randint(1, 11)]"
+    menu:
+        "Second chance?":
+            $ mercy += 5
+        "Incineration?":
+            $ mercy -= 5
+        "Refactoring?":
+            pass
+
+label judgement2:
+    n "In walks a man with a name badge: \"Bob - Greese Fire Putter-Outter - Macdonalds\"."
+    "Obedience: [random.randint(1, 99)]"
+    "Age: [random.randint(20, 35)]"
+    menu:
+        "Second chance?":
+            $ mercy += 5
+        "Incineration?":
+            $ mercy -= 5
+        "Refactoring?":
+            pass
+
+label judgement3:
+    n "A man wearing all black walks in, face covered with a rather odd mask."
+    "Obedience: [random.randint(-50, 0)]"
+    "£%asd/?: 04"
+    menu:
+        "Second chance?":
+            n "And so the end of the world was brought to truth."
+            n "Death after death you witnessed."
+            n "Blood baths and poppy parks."
+            n "And all this?"
+            n "One wrong choice caused ALL of this wreckage."
+            db "You would be fired... if only there were still a job."
+            db "Everyone is dead."
+        "Incineration?":
+            $ mercy -= 50
+            db "Well done."
+            db "You just saved the world from a whole lot of pain."
+            db "..."
+            db "Well..."
+            db "Except for the fact of:"
+            db "That was a being beyond the constraints or mortality."
+            db "A being... {w=0.5}that is my boss."
+            db "Who can easily bring round the destruction of the universe."
+            n "And upon those words escaping their mouth,"
+            n "A searing pain spreads through your body."
+            n "A lyric from one song plays in your head,"
+            n "Then another lyric from another song,"
+            n "And this loops over and over."
+            n "Fogging your mind,"
+            n "And preventing you from thinking straight."
+            n "And then you feel something else..."
+            n "Your body eating itself from the inside out,"
+            n "And within moments you are reduced to nothing,"
+            n "And the very last thing you hear..."
+            n "\"Romeo, take me somewhere we can be alone.\" overlapped with"
+            n "\"They're heathens, grasping out with their claws,\""
+            n "..."
+            n "And then silence... Darkness."
+            n "Is this what death feels like?"
+            n "An eternal nothingness."
+            n "A void of nothing where everything can be thought."
+            n "Calming..."
+            n "..."
+            n "But no. One, two, three, no FOUR snake-like creatures fly at you."
+            n "Knocking you over and over and over."
+            n "And once you feel numb to the pain, a single giant fish swallows you,"
+            n "and you start burning in the stomach acids."
+            n "Each and every pain being eternal. No time for rest. No time for anything but pain."
+        "Refactoring?":
+            n "A few years pass, and this event never crosses your mind again... until..."
+            db "The masked man you sent to refactoring a few years ago? Remember them?"
+            a "Somehow, yes. Why are you asking?"
+            db "Today, they just got out."
+            db "They *were* my boss - a being capable of making worlds collapse..."
+            db "Now, they're a king, capable of erecting kingdoms and making economies flourish."
+
+label judgement4:
+    n "A "
+    "Obedience: [random.randint(1, 99)]"
+    "Height: [random.randint(5, 7)]'[random.randint(1, 11)]"
+    menu:
+        "Second chance?":
+            $ mercy += 5
+        "Incineration?":
+            $ mercy -= 5
+        "Refactoring?":
+            pass
+
+label judgement5:
+    n "A ."
+    "Obedience: [random.randint(1, 99)]"
+    "Height: [random.randint(5, 7)]'[random.randint(1, 11)]"
+    menu:
+        "Second chance?":
+            $ mercy += 5
+        "Incineration?":
+            $ mercy -= 5
+        "Refactoring?":
+            pass
