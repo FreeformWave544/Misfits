@@ -796,7 +796,6 @@ label endScreen:
         n "A strange sensation punches you in the gut."
         n "...{w=0.5} a few gasped breaths and then..."
         n "And then a gentle hand rests on your shoulder..."
-        define db = Character("Death's Boss")
         n "And a voice graces your ears..."
         db "Hello, [a.name]."
         a "How do you know my—"
