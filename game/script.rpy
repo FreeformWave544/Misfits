@@ -997,6 +997,7 @@ label gun:
     n "Another life wasted to death..."
     n "Another lifetime of guilt..."
     n "..."
+    return
 
 label MaverickDeath:
     n "[m.name] drops to the ground... a lifeless corpse."
@@ -1006,6 +1007,7 @@ label MaverickDeath:
 label violin:
     n "The violin fits perfectly in your arms, and you feel an irresistible urge to play it..."
     n "But you resist. Obedience is the way. You put back the violin, and you continue on your way."
+    return
 
 label JudgeOfDeath:
     db "You job is to determine whether the people you get sent deserve another chance, incineration, or refactoring."
